@@ -3,6 +3,8 @@ Red=\033[0;31m
 Green=\033[0;32m
 NC=\033[0m
 
+WALLPAPER=rainbow
+
 setup:
 	@make update-dependencies
 	@make configure-theme
@@ -55,3 +57,8 @@ configure-dock:
 	gsettings set org.gnome.shell.extensions.dash-to-dock extend-height false
 	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts false
 	gsettings set org.gnome.shell.extensions.dash-to-dock show-mounts-network false
+
+configure-wallpaper:
+	@echo "\n${Green}---- Configuring Wallpaper ----${NC}"
+	gsettings set org.gnome.desktop.background picture-uri file://$(shell pwd)/wallpapers/${WALLPAPER}.jpg
+	gsettings set org.gnome.desktop.background picture-uri-dark file://$(shell pwd)/wallpapers/${WALLPAPER}.jpg
