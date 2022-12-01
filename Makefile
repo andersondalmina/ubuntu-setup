@@ -4,6 +4,7 @@ Green=\033[0;32m
 NC=\033[0m
 
 WALLPAPER=rainbow
+ZSH_CUSTOM_PATH=$(shell echo $$ZSH_CUSTOM)
 
 setup:
 	@make update-dependencies
@@ -39,6 +40,23 @@ install-spotify:
 install-dconf-editor:
 	@echo "\n${Green}---- Instaling Dconf-editor ----${NC}"
 	sudo apt install dconf-editor
+
+install-zsh:
+	#@echo "\n${Green}---- Instaling ZSH ----${NC}"
+	#sh -c '$(shell curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)'
+
+	echo ${ZSH_CUSTOM_PATH}
+
+	# git clone https://github.com/spaceship-prompt/spaceship-prompt.git "$ZSH_CUSTOM/themes/spaceship-prompt" --depth=1
+	# ln -s "$ZSH_CUSTOM/themes/spaceship-prompt/spaceship.zsh-theme" "$ZSH_CUSTOM/themes/spaceship.zsh-theme"
+
+
+install-node:
+	@echo "\n${Green}---- Instaling NVM and Node ----${NC}"
+	curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+	@source ~/.zshrc
+	nvm install node
+	nvm use node
 
 configure-theme:
 	@echo "\n${Green}---- Configuring Theme ----${NC}"
